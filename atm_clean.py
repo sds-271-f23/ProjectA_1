@@ -106,11 +106,4 @@ class atm:
         values["r_error"] = perr[0][0]
         values["T0"] = params[1]
         values["T0_error"] = perr[1][1]
-        print(values)
-        
-        
-df = pd.read_csv('atm_data.csv')        
-new_atm = atm('atm_data.csv')
-new_atm.clean_data()
-new_atm.fit_data()
-new_atm.plot_data_and_fit()
+        return values
