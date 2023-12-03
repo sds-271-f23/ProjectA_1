@@ -68,3 +68,12 @@ class atm:
         Returns:
         - dict: Dictionary containing 'r', 'r_error', 'T0', and 'T0_error'.
         """
+        values = {"r":0, "r_error":0, "T0":0, "T0_error":0}
+        self.clean_data()
+        params, covariance = self.fit_data()
+        perr = np.sqrt(np.diag(params))
+        values["r"] = params[0]
+        values["r_error"] = perr[0][0]
+        values["T0"] = params[1]
+        values["T0_error"] = perr[1][1]
+        return values
